@@ -58,7 +58,9 @@ func (g *Game) Update() error {
 	g.updateCounter = 0
 
 	// Обновление состояния змейки
-	g.Snake.Move()
+	if g.Button.IsClicked {
+		g.Snake.Move()
+	}
 
 	// Столкновение змейки с границами окна
 	head := g.Snake.Body[0]
@@ -84,6 +86,7 @@ func (g *Game) Update() error {
 		// Уменьшение скорости
 		if g.speed > 2 {
 			g.speed--
+
 		}
 	}
 
